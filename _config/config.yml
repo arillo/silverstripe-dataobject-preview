@@ -1,0 +1,10 @@
+---
+Name: dataobject-preview
+---
+Director:
+  rules:
+    'cms-preview//$Action/$ID': 'DataObjectPreviewController'
+
+GridFieldDetailForm_ItemRequest:
+  extensions:
+    - PreviewGridFieldDetailFormExtension
