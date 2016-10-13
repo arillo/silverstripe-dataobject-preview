@@ -1,6 +1,6 @@
 # silverstripe-dataobject-preview
 
-Shows a preview of your dataobjects like the one you get for pages.
+Shows a preview of your dataobjects like the one you get for pages. Works for GridField and ModelAdmin.
 
 _Pending fix_: If you switch to "Edit mode" you will not be able to show the preview again since the button gets removed. Will fix it soon.
 
@@ -37,7 +37,7 @@ SilverStripe 3.1 or higher
 
 ## Installation
 
-composer require arillo/silverstripe-dataobject-preview:1.0.0
+composer require arillo/silverstripe-dataobject-preview:1.0.*
 
 Tip: If you are using [silverstripe-gridfield-betterbuttons](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) you can disable the dataobject preview links since they are no longer needed. Just add this to your config.yml.
 

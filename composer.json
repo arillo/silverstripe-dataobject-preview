@@ -15,6 +15,9 @@
 			"email": "dm@arillo.net"
 		}
 	],
+    "extra": {
+        "installer-name": "dataobject-preview"
+    },
 	"require": {
 		"silverstripe/framework": "~3.1"
 	},
