@@ -2,7 +2,7 @@
 class PreviewGridFieldDetailFormExtension extends Extension {
 	public function updateItemEditForm(&$form){
 		$fields = $form->Fields();
-		if( $this->owner->record instanceof DataObject && !$fields->fieldByName('SilverStripeNavigator') ) {
+		if( $this->owner->record instanceof CMSPreviewable && !$fields->fieldByName('SilverStripeNavigator') ) {
 			$this->injectNavigatorAndPreview($form, $fields);
 		}
 	}
