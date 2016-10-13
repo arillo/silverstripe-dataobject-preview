@@ -1,5 +1,5 @@
 {
-	"name": "arillo/dataobject-preview",
+	"name": "arillo/silverstripe-dataobject-preview",
 	"description": "Shows a preview of your dataobjects like the one you get for pages.",
 	"type": "silverstripe-module",
 	"homepage": "https://github.com/arillo/silverstripe-dataobject-preview",

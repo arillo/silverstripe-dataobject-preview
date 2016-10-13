@@ -1,4 +1,4 @@
-# dataobject-preview
+# silverstripe-dataobject-preview
 
 Shows a preview of your dataobjects like the one you get for pages.
 
@@ -37,7 +37,7 @@ SilverStripe 3.1 or higher
 
 ## Installation
 
-composer require arillo/dataobject-preview:0.1.*
+composer require arillo/silverstripe-dataobject-preview:0.1.*
 
 Tip: If you are using [silverstripe-gridfield-betterbuttons](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) you can disable the dataobject preview links since they are no longer needed. Just add this to your config.yml.
 
