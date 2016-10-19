@@ -1,6 +1,6 @@
 # silverstripe-dataobject-preview
 
-Shows a preview of your dataobjects like the one you get for pages. Works for GridField and ModelAdmin.
+Shows a preview of your dataobjects like the one you get for pages. Works for GridField and ModelAdmin. Works currently only for Versioned DataObjects.
 
 _Pending fix_: If you switch to "Edit mode" you will not be able to show the preview again since the button gets removed. Will fix it soon.
 
@@ -15,6 +15,10 @@ class MyDataObject extends DataObject implements CMSPreviewable
 {
 
 	...
+
+    private static $extensions = array(
+        'Versioned("Stage","Live")'
+    );
 
 	public function PreviewLink($action = null){
 		return Controller::join_links(Director::baseURL(), 'cms-preview', 'show', $this->ID, $this->ClassName);
