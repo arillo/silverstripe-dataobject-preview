@@ -41,7 +41,15 @@ SilverStripe 3.1 or higher
 
 ## Installation
 
-composer require arillo/silverstripe-dataobject-preview:1.0.*
+    composer require arillo/silverstripe-dataobject-preview:1.0.*
+
+
+## Usage
+
+You can overwrite the templates by placing them in the templates folder of your theme or in your mysite folder.
+
+- PreviewDataObject.ss -> Container for MyDataObject preview (Like the main Page.ss)
+- DataObjectPreviewNotFound.ss -> DataObject not found or not yet created.
 
 Tip: If you are using [silverstripe-gridfield-betterbuttons](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) you can disable the dataobject preview links since they are no longer needed. Just add this to your config.yml.
 
