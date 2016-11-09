@@ -15,10 +15,12 @@ class DataObjectPreviewController extends Controller {
         $this->dataobject = $class::get()->filter(array('ID' => $request->param('ID')))->First();
         if ( is_null($this->dataobject) ) {
             return $this->customise(array(
+                'ClassName' => $class,
                 'Layout' => $this->renderWith('DataObjectPreviewNotFound')
                 ))->renderWith('PreviewDataObject');
         }
         return $this->customise(array(
+            'ClassName' => $class,
             'Layout' => $this->dataobject->renderWith($class)
             ))->renderWith('PreviewDataObject');
     }
