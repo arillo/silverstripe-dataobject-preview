@@ -7,22 +7,33 @@ class DataObjectPreviewController extends Controller {
         'show'
     );
 
+    private static $url_handlers = array(
+        'show/$ClassName/$ID/$OtherClassName/$OtherID' => 'show'
+    );
+
     public function show($request){
-        $class = $request->param('OtherID');
         if (class_exists('Fluent')) {
             Fluent::set_persist_locale(Session::get('FluentLocale_CMS'));
         }
-        $this->dataobject = $class::get()->filter(array('ID' => $request->param('ID')))->First();
-        if ( is_null($this->dataobject) ) {
-            return $this->customise(array(
-                'ClassName' => $class,
-                'Layout' => $this->renderWith('DataObjectPreviewNotFound')
-                ))->renderWith('PreviewDataObject');
+
+        $class = $request->param('ClassName');
+        if (!class_exists($class)){
+            throw new InvalidArgumentException(sprintf(
+                'DataObjectPreviewController: Class of type %s doesn\'t exist',
+                $class
+            ));
         }
+
+        $id = $request->param('ID');
+        if (!ctype_digit($id)){
+            throw new InvalidArgumentException('DataObjectPreviewController: ID  needs to be an integer');
+        }
+
+        $this->dataobject = $class::get()->filter(array('ID' => $id))->First();
+
         return $this->customise(array(
-            'ClassName' => $class,
-            'Layout' => $this->dataobject->renderWith($class)
-            ))->renderWith('PreviewDataObject');
+            'DataObject' => $this->dataobject
+        ))->renderWith('PreviewDataObject');
     }
 
 }

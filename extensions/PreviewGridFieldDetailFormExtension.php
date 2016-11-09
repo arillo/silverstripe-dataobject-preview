@@ -15,7 +15,7 @@ class PreviewGridFieldDetailFormExtension extends Extension {
 		$field->setAllowHTML(true);
 		$fields->push($field);
 		$form->addExtraClass('cms-previewable');
-		$form->addExtraClass(' cms-previewabledataobject');
+		$form->addExtraClass('cms-previewabledataobject');
 		$form->removeExtraClass('cms-panel-padded center');
 	}
 }

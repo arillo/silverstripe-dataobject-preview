@@ -21,7 +21,7 @@ class MyDataObject extends DataObject implements CMSPreviewable
     );
 
 	public function PreviewLink($action = null){
-		return Controller::join_links(Director::baseURL(), 'cms-preview', 'show', $this->ID, $this->ClassName);
+		return Controller::join_links(Director::baseURL(), 'cms-preview', 'show', $this->ClassName, $this->ID);
 	}
 
     public function Link() {
@@ -49,7 +49,6 @@ SilverStripe 3.1 or higher
 You can overwrite the templates by placing them in the templates folder of your theme or in your mysite folder.
 
 - PreviewDataObject.ss -> Container for MyDataObject preview (Like the main Page.ss)
-- DataObjectPreviewNotFound.ss -> DataObject not found or not yet created.
 
 Tip: If you are using [silverstripe-gridfield-betterbuttons](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) you can disable the dataobject preview links since they are no longer needed. Just add this to your config.yml.
 

@@ -3,7 +3,7 @@ Name: dataobject-preview
 ---
 Director:
   rules:
-    'cms-preview//$Action/$ID': 'DataObjectPreviewController'
+    'cms-preview': 'DataObjectPreviewController'
 
 GridFieldDetailForm_ItemRequest:
   extensions:
