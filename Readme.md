@@ -1,5 +1,8 @@
 # silverstripe-dataobject-preview
 
+[![Latest Stable Version](https://poser.pugx.org/arillo/silverstripe-dataobject-preview/v/stable?format=flat)](https://packagist.org/packages/arillo/silverstripe-dataobject-preview)
+[![Total Downloads](https://poser.pugx.org/arillo/silverstripe-dataobject-preview/downloads?format=flat)](https://packagist.org/packages/arillo/silverstripe-dataobject-preview)
+
 Shows a preview of your dataobjects like the one you get for pages. Works for GridField and ModelAdmin. Works currently only for Versioned DataObjects.
 
 _Pending fix_: If you switch to "Edit mode" you will not be able to show the preview again since the button gets removed. Will fix it soon.
