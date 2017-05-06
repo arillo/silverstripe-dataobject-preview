@@ -31,6 +31,11 @@ class DataObjectPreviewController extends Controller {
 
         $this->dataobject = $class::get()->filter(array('ID' => $id))->First();
 
+        if (!$this->dataobject) {
+             return $this->customise(array(
+                'Rendered' => false
+            ))->renderWith('PreviewDataObject');
+        }
         if ($this->dataobject->hasMethod('previewRender')) {
             return $this->customise(array(
                 'Rendered' => $this->dataObject->previewRender()
