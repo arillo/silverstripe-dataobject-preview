@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="$ContentLocale">
+  <head>
+    <% base_tag %>
+  </head>
   <body>
     <div style="padding-top: 40px;">
 
-      <% if $DataObject %>
-        <% with $DataObject %>
-          $renderWith($ClassName)
-        <% end_with %>
+      <% if $Rendered %>
+        $Rendered
       <% else %>
         <div style="text-align: center;">
           Object not found or not created yet.
