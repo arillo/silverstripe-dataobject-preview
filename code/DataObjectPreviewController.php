@@ -38,7 +38,7 @@ class DataObjectPreviewController extends Controller {
         }
         if ($this->dataobject->hasMethod('previewRender')) {
             return $this->customise(array(
-                'Rendered' => $this->dataObject->previewRender()
+                'Rendered' => $this->dataobject->previewRender()
             ))->renderWith('PreviewDataObject');
         } else {
             return $this->customise(array(
