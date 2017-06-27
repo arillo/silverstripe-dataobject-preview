@@ -1,4 +1,4 @@
-# silverstripe-dataobject-preview
+# Dataobject preview
 
 [![Latest Stable Version](https://poser.pugx.org/arillo/silverstripe-dataobject-preview/v/stable?format=flat)](https://packagist.org/packages/arillo/silverstripe-dataobject-preview)
 [![Total Downloads](https://poser.pugx.org/arillo/silverstripe-dataobject-preview/downloads?format=flat)](https://packagist.org/packages/arillo/silverstripe-dataobject-preview)
