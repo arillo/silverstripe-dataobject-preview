@@ -15,13 +15,13 @@
 			"email": "dm@arillo.net"
 		}
 	],
-    "extra": {
-        "installer-name": "dataobject-preview"
-    },
+	"extra": {
+		"installer-name": "dataobject-preview"
+	},
 	"require": {
-		"silverstripe/framework": "~3.1"
+		"silverstripe/framework": "~4.0"
 	},
 	"support": {
-        "issues": "https://github.com/arillo/silverstripe-dataobject-preview/issues"
-    }
+		"issues": "https://github.com/arillo/silverstripe-dataobject-preview/issues"
+	}
 }

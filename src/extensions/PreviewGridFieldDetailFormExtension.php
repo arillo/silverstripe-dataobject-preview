@@ -1,11 +1,23 @@
 <?php
+
+namespace SilverStripe\DataObjectPreview\Extensions;
+
+use SilverStripe\Control\Controller;
+use SilverStripe\Core\Extension;
+use SilverStripe\CMS\Controllers\SilverStripeNavigator;
+use SilverStripe\ORM\CMSPreviewable;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\View\Requirements;
+
 class PreviewGridFieldDetailFormExtension extends Extension {
+
 	public function updateItemEditForm(&$form){
 		$fields = $form->Fields();
 		if( $this->owner->record instanceof CMSPreviewable && !$fields->fieldByName('SilverStripeNavigator') ) {
 			$this->injectNavigatorAndPreview($form, $fields);
 		}
 	}
+
 	private function injectNavigatorAndPreview(&$form, &$fields){
 		Requirements::javascript(DATAOBJECT_PREVIEW_DIR.'/javascript/GridField.Preview.js');
 		//@TODO: Do we need to verify we are in the right controller?

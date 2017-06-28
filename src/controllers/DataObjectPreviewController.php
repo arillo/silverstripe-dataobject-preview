@@ -1,15 +1,24 @@
 <?php
+namespace SilverStripe\DataObjectPreview\Controllers;
+
+use SilverStripe\Control\Controller;
+use InvalidArgumentException;
+
 class DataObjectPreviewController extends Controller {
 
-    public $dataobject;
+    protected $dataobject;
 
-    public static $allowed_actions = array(
+    private static $allowed_actions = array(
         'show'
     );
 
     private static $url_handlers = array(
         'show/$ClassName/$ID/$OtherClassName/$OtherID' => 'show'
     );
+
+    public static function stripNamespacing($namespaceClass) {
+        return substr($namespaceClass, strrpos($namespaceClass, '\\') + 1);
+    }
 
     public function show($request){
         if (class_exists('Fluent')) {
@@ -32,18 +41,15 @@ class DataObjectPreviewController extends Controller {
         $this->dataobject = $class::get()->filter(array('ID' => $id))->First();
 
         if (!$this->dataobject) {
-             return $this->customise(array(
-                'Rendered' => false
-            ))->renderWith('PreviewDataObject');
-        }
-        if ($this->dataobject->hasMethod('previewRender')) {
-            return $this->customise(array(
-                'Rendered' => $this->dataobject->previewRender()
-            ))->renderWith('PreviewDataObject');
+            $r = false;
+        } else if ($this->dataobject->hasMethod('previewRender')) {
+            $r = $this->dataobject->previewRender();
         } else {
-            return $this->customise(array(
-                'Rendered' => $this->dataobject->renderWith($class)
-            ))->renderWith('PreviewDataObject');
+            $r = $this->dataobject->renderWith(self::stripNamespacing($class));
         }
+
+        return $this->customise(array(
+            'Rendered' => $r
+        ))->renderWith('PreviewDataObject');
     }
 }
