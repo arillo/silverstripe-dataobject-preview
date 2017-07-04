@@ -19,6 +19,8 @@ class PreviewGridFieldDetailFormExtension extends Extension {
 	}
 
 	private function injectNavigatorAndPreview(&$form, &$fields){
+        // Debug::dump(DATAOBJECT_PREVIEW_DIR.'/javascript/GridField.Preview.js');
+        // die();
 		Requirements::javascript(DATAOBJECT_PREVIEW_DIR.'/javascript/GridField.Preview.js');
 		//@TODO: Do we need to verify we are in the right controller?
 		$template = Controller::curr()->getTemplatesWithSuffix('_SilverStripeNavigator');

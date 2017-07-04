@@ -8,16 +8,17 @@ class DataObjectPreviewController extends Controller {
 
     protected $dataobject;
 
-    private static $allowed_actions = array(
-        'show'
-    );
-
-    private static $url_handlers = array(
-        'show/$ClassName/$ID/$OtherClassName/$OtherID' => 'show'
-    );
+    private static
+        $allowed_actions = [
+            'show'
+        ],
+        $url_handlers = [
+            'show/$ClassName/$ID/$OtherClassName/$OtherID' => 'show'
+        ]
+    ;
 
     public static function stripNamespacing($namespaceClass) {
-        return substr($namespaceClass, strrpos($namespaceClass, '\\') + 1);
+        return substr($namespaceClass, strrpos($namespaceClass, '\\'));
     }
 
     public function show($request){
@@ -35,15 +36,15 @@ class DataObjectPreviewController extends Controller {
 
         $id = $request->param('ID');
         if (!ctype_digit($id)){
-            throw new InvalidArgumentException('DataObjectPreviewController: ID  needs to be an integer');
+            throw new InvalidArgumentException('DataObjectPreviewController: ID needs to be an integer');
         }
 
         $this->dataobject = $class::get()->filter(array('ID' => $id))->First();
 
         if (!$this->dataobject) {
             $r = false;
-        } else if ($this->dataobject->hasMethod('previewRender')) {
-            $r = $this->dataobject->previewRender();
+        } else if ($this->dataobject->hasMethod('renderPreview')) {
+            $r = $this->dataobject->renderPreview();
         } else {
             $r = $this->dataobject->renderWith(self::stripNamespacing($class));
         }
