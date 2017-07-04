@@ -1,10 +1,10 @@
 ---
 Name: dataobject-preview
 ---
-Director:
+SilverStripe\Control\Director:
   rules:
-    'cms-preview': 'DataObjectPreviewController'
+    'cms-preview': 'SilverStripe\DataObjectPreview\Controllers\DataObjectPreviewController'
 
-GridFieldDetailForm_ItemRequest:
+SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
   extensions:
-    - PreviewGridFieldDetailFormExtension
+    - SilverStripe\DataObjectPreview\Extensions\PreviewGridFieldDetailFormExtension
