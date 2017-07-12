@@ -18,7 +18,10 @@ class DataObjectPreviewController extends Controller {
     ;
 
     public static function stripNamespacing($namespaceClass) {
-        return substr($namespaceClass, strrpos($namespaceClass, '\\'));
+        if (strrpos($namespaceClass, '\\')) {
+            return substr($namespaceClass, strrpos($namespaceClass, '\\') + 1);
+        }
+        return $namespaceClass;
     }
 
     public function show($request){
