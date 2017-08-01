@@ -3,12 +3,20 @@
     "page": {
       "layout": "index",
       "theme": "blue",
-      "title": "SilverStripe Dataobject preview",
-      "intro": "Shows a preview of your dataobjects like the one you get for pages."
+      "title": "SilverStripe Elements",
+      "intro": "Preview your dataobjects like pages in the SilverStripe CMS."
     }
   },
+
+  "page": {
+    "silverstripe": true,
+    "metaDescription": "Preview your dataobjects like pages in the SilverStripe CMS.",
+    "metaImage": "http://assets.arillo.net/gh-pages-share-img.png"
+  },
+
   "menu": false,
   "projectBase": "/silverstripe-dataobject-preview",
+  "projectUrl": "https://arillo.github.io/silverstripe-dataobject-preview/",
   "githubLink": "https://github.com/arillo/silverstripe-dataobject-preview",
   "licenseLink": "https://github.com/arillo/silverstripe-dataobject-preview/blob/master/License.md",
   "licenseType": "MIT"
