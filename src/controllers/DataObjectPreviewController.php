@@ -30,6 +30,7 @@ class DataObjectPreviewController extends Controller {
         }
 
         $class = $request->param('ClassName');
+        $class = str_replace('-', '\\', $class);
         if (!class_exists($class)){
             throw new InvalidArgumentException(sprintf(
                 'DataObjectPreviewController: Class of type %s doesn\'t exist',
