@@ -50,7 +50,10 @@ class DataObjectPreviewController extends Controller {
         } else if ($this->dataobject->hasMethod('renderPreview')) {
             $r = $this->dataobject->renderPreview();
         } else {
-            $r = $this->dataobject->renderWith(self::stripNamespacing($class));
+            $r = $this->dataobject->renderWith([
+                $class,
+                self::stripNamespacing($class)
+            ]);
         }
 
         return $this->customise(array(
