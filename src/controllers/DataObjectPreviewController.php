@@ -4,8 +4,8 @@ namespace SilverStripe\DataObjectPreview\Controllers;
 use SilverStripe\Control\Controller;
 use InvalidArgumentException;
 
-class DataObjectPreviewController extends Controller {
-
+class DataObjectPreviewController extends Controller
+{
     protected $dataobject;
 
     private static
@@ -17,18 +17,16 @@ class DataObjectPreviewController extends Controller {
         ]
     ;
 
-    public static function stripNamespacing($namespaceClass) {
+    public static function strip_namespacing($namespaceClass)
+    {
         if (strrpos($namespaceClass, '\\')) {
             return substr($namespaceClass, strrpos($namespaceClass, '\\') + 1);
         }
         return $namespaceClass;
     }
 
-    public function show($request){
-        if (class_exists('Fluent')) {
-            Fluent::set_persist_locale(Session::get('FluentLocale_CMS'));
-        }
-
+    public function show($request)
+    {
         $class = $request->param('ClassName');
         $class = str_replace('-', '\\', $class);
         if (!class_exists($class)){
@@ -39,25 +37,33 @@ class DataObjectPreviewController extends Controller {
         }
 
         $id = $request->param('ID');
-        if (!ctype_digit($id)){
+        if (!ctype_digit($id))
+        {
             throw new InvalidArgumentException('DataObjectPreviewController: ID needs to be an integer');
         }
 
         $this->dataobject = $class::get()->filter(array('ID' => $id))->First();
 
-        if (!$this->dataobject) {
-            $r = false;
-        } else if ($this->dataobject->hasMethod('renderPreview')) {
-            $r = $this->dataobject->renderPreview();
-        } else {
-            $r = $this->dataobject->renderWith([
-                $class,
-                self::stripNamespacing($class)
-            ]);
+        $r = false;
+        switch (true)
+        {
+            case (!$this->dataobject):
+                $r = false;
+                break;
+            case ($this->dataobject->hasMethod('renderPreview')):
+                $r = $this->dataobject->renderPreview();
+                break;
+
+            default:
+                $r = $this->dataobject->renderWith([
+                    $class,
+                    self::strip_namespacing($class)
+                ]);
+                break;
         }
 
-        return $this->customise(array(
+        return $this->customise([
             'Rendered' => $r
-        ))->renderWith('PreviewDataObject');
+        ])->renderWith('PreviewDataObject');
     }
 }

@@ -7,14 +7,15 @@ Shows a preview of your dataobjects like the one you get for pages. Works for Gr
 
 For the preview to work you need to implement the CMSPreviewable interface on your DataObject and declare the methods getMimeType, CMSEditLink and PreviewLink($action = null).
 
-PreviewLink is the only link we are interested for the preview to work. The DataObjectPreviewController will listen for this links to render your MyDataObject with the MyDataObject.ss template in your theme/templates/* folder.
+PreviewLink is the only link we are interested for the preview to work. The DataObjectPreviewController will listen for this links to render your MyDataObject with the MyDataObject.ss template in your theme/templates/\* folder.
 
 ## Example
+
 ```php
 <?php
 class MyDataObject extends DataObject implements CMSPreviewable
 {
-	...
+    ...
     private static $extensions = array(
         Versioned::class
     );
@@ -23,29 +24,31 @@ class MyDataObject extends DataObject implements CMSPreviewable
         "Stage",  "Live"
     );
 
-	public function PreviewLink($action = null){
-		return Controller::join_links(Director::baseURL(), 'cms-preview', 'show', $this->ClassName, $this->ID);
-	}
+    public function PreviewLink($action = null){
+        return Controller::join_links(Director::baseURL(), 'cms-preview', 'show', $this->ClassName, $this->ID);
+    }
 
     public function getMimeType()
     {
         return 'text/html';
     }
 
-	public function CMSEditLink(){
-		...
-	}
+    public function CMSEditLink(){
+        ...
+    }
     ...
 }
 ```
 
-## Requirements
+### Requirements
 
-SilverStripe 3.1 or higher
+SilverStripe CMS ^4.0
+
+For a SilverStripe 3.x compatible version of this module, please see the [1 branch, or 1.x release line](https://github.com/arillo/silverstripe-arbitrarysettings/tree/1.0).
 
 ## Installation
 
-    composer require arillo/silverstripe-dataobject-preview:1.0.*
+    composer require arillo/silverstripe-dataobject-preview:2.0.*
 
 ## Overwrites
 
@@ -59,19 +62,18 @@ If you would like to customise this behaviour you can do so by implementing your
 ```php
 class MyDataObject extends DataObject implements CMSPreviewable
 {
-	...
+    ...
     public function renderPreview()
-	{
+    {
         // this will look for themes/yourtheme/templates/Includes/MyDataObject.ss
-		return $this->renderWith('Includes/'.MyDataObject::class);
-	}
+        return $this->renderWith('Includes/'.MyDataObject::class);
+    }
 }
 ```
 
 You can overwrite the main template by placing it either in themes/yourtheme/templates/PreviewDataObject.ss or mysite/PreviewDataObject.ss.
 
-- PreviewDataObject.ss -> Container for MyDataObject preview (Like the main Page.ss)
-
+* PreviewDataObject.ss -> Container for MyDataObject preview (Like the main Page.ss)
 
 Tip: If you are using [silverstripe-gridfield-betterbuttons](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) you can disable the dataobject preview links since they are no longer needed. Just add this to your config.yml.
 
@@ -86,4 +88,5 @@ BetterButtonsActions:
 ## Changelog
 
 V 4.0.0
-- renamed method previewRender to renderPreview
+
+* renamed method previewRender to renderPreview
