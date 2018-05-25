@@ -9,6 +9,16 @@ For the preview to work you need to implement the CMSPreviewable interface on yo
 
 PreviewLink is the only link we are interested for the preview to work. The DataObjectPreviewController will listen for this links to render your MyDataObject with the MyDataObject.ss template in your theme/templates/\* folder.
 
+## Requirements
+
+SilverStripe CMS ^4.0
+
+For a SilverStripe 3.x compatible version of this module, please see the [1 branch, or 1.x release line](https://github.com/arillo/silverstripe-arbitrarysettings/tree/1.0).
+
+## Installation
+
+    composer require arillo/silverstripe-dataobject-preview:2.0.*
+
 ## Example
 
 ```php
@@ -39,16 +49,6 @@ class MyDataObject extends DataObject implements CMSPreviewable
     ...
 }
 ```
-
-### Requirements
-
-SilverStripe CMS ^4.0
-
-For a SilverStripe 3.x compatible version of this module, please see the [1 branch, or 1.x release line](https://github.com/arillo/silverstripe-arbitrarysettings/tree/1.0).
-
-## Installation
-
-    composer require arillo/silverstripe-dataobject-preview:2.0.*
 
 ## Overwrites
 
