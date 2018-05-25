@@ -1,27 +1,26 @@
 {
-	"name": "arillo/silverstripe-dataobject-preview",
-	"description": "Shows a preview of your dataobjects like the one you get for pages.",
-	"type": "silverstripe-module",
-	"homepage": "https://github.com/arillo/silverstripe-dataobject-preview",
-	"keywords": [
-		"silverstripe",
-		"dataobject",
-		"preview"
-	],
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Daniel Murcia",
-			"email": "dm@arillo.net"
-		}
-	],
-	"extra": {
-		"installer-name": "dataobject-preview"
-	},
-	"require": {
-		"silverstripe/framework": "~4.0"
-	},
-	"support": {
-		"issues": "https://github.com/arillo/silverstripe-dataobject-preview/issues"
-	}
+    "name": "arillo/silverstripe-dataobject-preview",
+    "description":
+        "Shows a preview of your dataobjects like the one you get for pages.",
+    "type": "silverstripe-vendormodule",
+    "homepage": "https://github.com/arillo/silverstripe-dataobject-preview",
+    "keywords": ["silverstripe", "dataobject", "preview"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Murcia",
+            "email": "dm@arillo.net"
+        }
+    ],
+    "extra": {
+        "installer-name": "dataobject-preview",
+        "expose": ["client"]
+    },
+    "require": {
+        "silverstripe/framework": "~4.0"
+    },
+    "support": {
+        "issues":
+            "https://github.com/arillo/silverstripe-dataobject-preview/issues"
+    }
 }
