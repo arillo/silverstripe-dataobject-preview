@@ -2,20 +2,18 @@
 namespace SilverStripe\DataObjectPreview\Controllers;
 
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
+use SilverStripe\Versioned\Versioned;
 use InvalidArgumentException;
 
 class DataObjectPreviewController extends Controller
 {
     protected $dataobject;
 
-    private static
-        $allowed_actions = [
-            'show'
-        ],
-        $url_handlers = [
-            'show/$ClassName/$ID/$OtherClassName/$OtherID' => 'show'
-        ]
-    ;
+    private static $allowed_actions = [ 'show' ];
+    private static $url_handlers = [
+        'show/$ClassName/$ID/$OtherClassName/$OtherID' => 'show'
+    ];
 
     public static function strip_namespacing($namespaceClass)
     {
@@ -23,6 +21,19 @@ class DataObjectPreviewController extends Controller
             return substr($namespaceClass, strrpos($namespaceClass, '\\') + 1);
         }
         return $namespaceClass;
+    }
+
+    protected function init()
+    {
+        parent::init();
+
+        // In the CMS Preview or draft contexts, we never want to cache page output.
+        if (
+            $this->getRequest()->getVar('CMSPreview') == '1' ||
+            $this->getRequest()->getVar('stage') == Versioned::DRAFT
+        ) {
+            HTTPCacheControlMiddleware::singleton()->disableCache(true);
+        }
     }
 
     public function show($request)
