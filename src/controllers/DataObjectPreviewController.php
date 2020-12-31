@@ -38,7 +38,7 @@ class DataObjectPreviewController extends Controller
 
     public function show($request)
     {
-        $class = $request->param('ClassName');
+        $class = urldecode($request->param('ClassName'));
         $class = str_replace('-', '\\', $class);
         if (!class_exists($class)){
             throw new InvalidArgumentException(sprintf(
