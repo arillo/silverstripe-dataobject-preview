@@ -78,7 +78,7 @@ class CustomModelAdmin extends ModelAdmin {
 }
 ```
 
-we need to create the corresponding template in mysite/templates/Arillo/DataObjectPreview/Admins/CustomModelAdmin.ss with this content copied from version 4.7.0 of the silverstripe/cms module. (Beware that this can vary depending on the version and may be changed over time.)
+we need to create the corresponding template in mysite/templates/Arillo/DataObjectPreview/Admins/Includes/CustomModelAdmin_PreviewPanel.ss with this content copied from version 4.7.0 of the silverstripe/cms module. (Beware that this can vary depending on the version and may be changed over time.)
 
 ```html
 <div class="cms-preview fill-height flexbox-area-grow" data-layout-type="border">
