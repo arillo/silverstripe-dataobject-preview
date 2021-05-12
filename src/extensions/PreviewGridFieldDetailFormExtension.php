@@ -8,17 +8,17 @@ use SilverStripe\Core\Extension;
 use SilverStripe\CMS\Controllers\SilverStripeNavigator;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\View\Requirements;
 
 class PreviewGridFieldDetailFormExtension extends Extension
 {
     public function updateItemEditForm(&$form)
     {
         $fields = $form->Fields();
-        if ($this->owner->record instanceof CMSPreviewable && !$fields->fieldByName('SilverStripeNavigator'))
-        {
-            $fields->removeByName('SilverStripeNavigator');
+        if ($this->owner->record instanceof CMSPreviewable && !$fields->fieldByName('SilverStripeNavigator')) {
             $ctrl = Controller::curr();
-            if(!$ctrl instanceof ModelAdmin){
+            if ($ctrl instanceof ModelAdmin) {
+                Requirements::javascript('arillo/silverstripe-dataobject-preview:client/javascript/GridField.Preview.js');
                 $navigator = new SilverStripeNavigator($this->owner->record);
                 $field = new LiteralField('SilverStripeNavigator', $navigator->renderWith($ctrl->getTemplatesWithSuffix('_SilverStripeNavigator')));
                 $field->setAllowHTML(true);
