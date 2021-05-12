@@ -5,7 +5,7 @@
 
 Shows a preview of your dataobjects like the one you get for pages. Works for GridField and ModelAdmin. Works only for Versioned DataObjects.
 
-For the preview to work you need to implement the CMSPreviewable interface on your DataObject and declare the methods getMimeType, CMSEditLink and PreviewLink($action = null). 
+For the preview to work you need to implement the CMSPreviewable interface on your DataObject and declare the methods getMimeType, CMSEditLink and PreviewLink($action = null).
 
 You also will need to declare the stages this DataObject should show in the preview pane by setting the appropiate static variables to true.
 
@@ -78,24 +78,38 @@ class CustomModelAdmin extends ModelAdmin {
 }
 ```
 
-we need to create the corresponding template in mysite/templates/Arillo/DataObjectPreview/Admins/Includes/CustomModelAdmin_PreviewPanel.ss with this content copied from version 4.7.0 of the silverstripe/cms module. (Beware that this can vary depending on the version and may be changed over time.)
+We need to create the corresponding template in mysite/templates/Arillo/DataObjectPreview/Admins/Includes/CustomModelAdmin_PreviewPanel.ss with this content copied from version 4.7.0 of the silverstripe/cms module. (Beware that this can vary depending on the version and may be changed over time.)
 
 ```html
-<div class="cms-preview fill-height flexbox-area-grow" data-layout-type="border">
-	<div class="panel flexbox-area-grow fill-height">
-		<div class="preview-note"><span><!-- --></span><%t SilverStripe\CMS\Controllers\CMSPageHistoryController.PREVIEW 'Website preview' %></div>
-		<div class="preview__device">
-			<div class="preview-device-outer">
-				<div class="preview-device-inner">
-					<iframe src="about:blank" class="center" name="cms-preview-iframe"></iframe>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="toolbar toolbar--south cms-content-controls cms-preview-controls"></div>
-	<div class="cms-preview-overlay ui-widget-overlay-light"></div>
+<div
+    class="cms-preview fill-height flexbox-area-grow"
+    data-layout-type="border"
+>
+    <div class="panel flexbox-area-grow fill-height">
+        <div class="preview-note">
+            <span><!-- --></span><%t
+            SilverStripe\CMS\Controllers\CMSPageHistoryController.PREVIEW
+            'Website preview' %>
+        </div>
+        <div class="preview__device">
+            <div class="preview-device-outer">
+                <div class="preview-device-inner">
+                    <iframe
+                        src="about:blank"
+                        class="center"
+                        name="cms-preview-iframe"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        class="toolbar toolbar--south cms-content-controls cms-preview-controls"
+    ></div>
+    <div class="cms-preview-overlay ui-widget-overlay-light"></div>
 </div>
 ```
+
 ## Usage
 
 By default, the dataobject preview will look for templates with the dataobject classname directly in the templates folder. So for the example above it will look for themes/yourtheme/templates/Arillo/DataObjectPreview/Models/MyDataObject.ss.
@@ -116,7 +130,7 @@ class MyDataObject extends DataObject implements CMSPreviewable
 
 You can overwrite the main template by placing it either in themes/yourtheme/templates/PreviewDataObject.ss or mysite/PreviewDataObject.ss.
 
-* PreviewDataObject.ss -> Container for MyDataObject preview (Like the main Page.ss)
+-   PreviewDataObject.ss -> Container for MyDataObject preview (Like the main Page.ss)
 
 Tip: If you are using [silverstripe-gridfield-betterbuttons](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) you can disable the dataobject preview links since they are no longer needed. Just add this to your config.yml.
 
@@ -131,7 +145,9 @@ BetterButtonsActions:
 ## Changelog
 
 V 2.0.2
-* added modeladmin support
+
+-   added modeladmin support
 
 V 2.0.0
-* renamed method previewRender to renderPreview
+
+-   renamed method previewRender to renderPreview
