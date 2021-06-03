@@ -11,6 +11,8 @@ class DataObjectPreviewController extends Controller
     protected $dataobject;
 
     private static $allowed_actions = [ 'show' ];
+    private static $url_segment = 'show';
+
     private static $url_handlers = [
         'show/$ClassName/$ID/$OtherClassName/$OtherID' => 'show'
     ];
