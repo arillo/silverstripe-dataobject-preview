@@ -4,7 +4,7 @@
     <% base_tag %>
   </head>
   <body>
-    <div style="padding-top: 40px;">
+    <div class="content content-typography-space">
 
       <% if $Rendered %>
         $Rendered
