@@ -4,7 +4,9 @@ Name: dataobject-preview
 SilverStripe\Control\Director:
   rules:
     'cms-preview': 'SilverStripe\DataObjectPreview\Controllers\DataObjectPreviewController'
-
 SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
   extensions:
     - SilverStripe\DataObjectPreview\Extensions\PreviewGridFieldDetailFormExtension
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+    - 'arillo/silverstripe-dataobject-preview:client/css/dataobject-preview.css'
