@@ -6,6 +6,10 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
 /**/
 class PreviewGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest{
+    /**/
+    private static $allowed_actions = [
+        'ItemEditForm',
+    ];
   /**/
   public function ItemEditForm(){
 
