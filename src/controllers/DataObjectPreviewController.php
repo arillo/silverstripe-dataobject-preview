@@ -1,12 +1,12 @@
 <?php
 namespace SilverStripe\DataObjectPreview\Controllers;
 
-use SilverStripe\Control\Controller;
+use PageController;
 use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
 use SilverStripe\Versioned\Versioned;
 use InvalidArgumentException;
 
-class DataObjectPreviewController extends Controller
+class DataObjectPreviewController extends PageController
 {
     protected $dataobject;
 
