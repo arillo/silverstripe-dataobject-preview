@@ -1,6 +1,8 @@
 <?php
 namespace SilverStripe\DataObjectPreview\Controllers;
 
+
+use SilverStripe\i18n\i18n;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Middleware\HTTPCacheControlMiddleware;
 use SilverStripe\Versioned\Versioned;
@@ -67,6 +69,10 @@ class DataObjectPreviewController extends Controller
             ::get()
             ->filter(['ID' => $id])
             ->First();
+
+        if ($this->dataobject && $this->dataobject->Locale) {
+            i18n::set_locale($this->dataobject->Locale);
+        }
 
         $r = false;
         switch (true) {
