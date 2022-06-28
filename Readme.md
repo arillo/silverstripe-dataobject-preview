@@ -132,6 +132,14 @@ You can overwrite the main template by placing it either in themes/yourtheme/tem
 
 -   PreviewDataObject.ss -> Container for MyDataObject preview (Like the main Page.ss)
 
+
+Since SilverStripe 4.11 supports better previews for DataObject, you might want to disable legacy code injection by this module. It can be turned off by:
+
+```
+SilverStripe\DataObjectPreview\Extensions\PreviewGridFieldDetailFormExtension:
+  inject_legacy_code: false
+```
+
 Tip: If you are using [silverstripe-gridfield-betterbuttons](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) you can disable the dataobject preview links since they are no longer needed. Just add this to your config.yml.
 
 ```
