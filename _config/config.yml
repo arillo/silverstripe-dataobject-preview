@@ -4,7 +4,3 @@ Name: dataobject-preview
 SilverStripe\Control\Director:
   rules:
     'cms-preview': 'SilverStripe\DataObjectPreview\Controllers\DataObjectPreviewController'
-
-SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
-  extensions:
-    - SilverStripe\DataObjectPreview\Extensions\PreviewGridFieldDetailFormExtension

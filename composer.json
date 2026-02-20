@@ -1,5 +1,6 @@
 {
     "name": "arillo/silverstripe-dataobject-preview",
+    "version": "6.0",
     "description": "Shows a preview of your dataobjects like the one you get for pages.",
     "type": "silverstripe-vendormodule",
     "homepage": "https://github.com/arillo/silverstripe-dataobject-preview",
@@ -16,10 +17,11 @@
         "expose": ["client"]
     },
     "require": {
-        "silverstripe/framework": "^4"
+        "silverstripe/framework": "^6"
     },
     "support": {
         "issues":
             "https://github.com/arillo/silverstripe-dataobject-preview/issues"
     }
 }
+3

@@ -4,7 +4,7 @@ namespace SilverStripe\DataObjectPreview\Extensions;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\Extension;
-use SilverStripe\CMS\Controllers\SilverStripeNavigator;
+use SilverStripe\Admin\Navigator\SilverStripeNavigator;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\View\Requirements;
